@@ -14,6 +14,7 @@ Discourse.SiteMapController = Ember.ArrayController.extend(Discourse.HasCurrentU
   }.property(),
 
   showMobileToggle: function() {
+    return false;
     return Discourse.SiteSettings.enable_mobile_theme;
   }.property(),
 
