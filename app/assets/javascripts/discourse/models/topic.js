@@ -12,6 +12,10 @@ Discourse.Topic = Discourse.Model.extend({
     return Discourse.PostStream.create({topic: this});
   }.property(),
 
+  creator: function() {
+    return this.posters[0].user;
+  }.property(),
+
   details: function() {
     return Discourse.TopicDetails.create({topic: this});
   }.property(),

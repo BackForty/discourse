@@ -9,45 +9,18 @@
     <div id='topic-title'>
       <div class='container'>
         <div class='inner'>
-
-          {{#if showStarButton}}
-            <a {{bind-attr class=":star starred:starred"}} {{action toggleStar}} href='#' {{bind-attr title="starTooltip"}}></a>
-          {{/if}}
-
-          {{#if editingTopic}}
-            {{#if isPrivateMessage}}
-              <span class="private-message-glyph"><i class='fa fa-envelope'></i></span>
-            {{else}}
-              {{categoryChooser valueAttribute="id" value=newCategoryId source=category_id}}
+          <h1>
+            <!-- {{boundCategoryLink category}} -->
+            {{#if details.loaded}}
+              <a href='{{unbound url}}' {{action jumpTop}}>
+                {{#if topicSaving}}
+                  {{fancy_title}}
+                {{else}}
+                  {{{fancy_title}}}
+                {{/if}}
+              </a>
             {{/if}}
-            {{textField id='edit-title' value=newTitle}}
-
-            <button class='btn btn-primary btn-small no-text' {{action finishedEditingTopic}}><i class='fa fa-check'></i></button>
-            <button class='btn btn-small no-text' {{action cancelEditingTopic}}><i class='fa fa-times'></i></button>
-          {{else}}
-            <h1>
-              <span class="private-message-glyph"><i class='fa fa-envelope'></i></span>
-              {{#if category.parentCategory}}
-                {{boundCategoryLink category.parentCategory}}
-              {{/if}}
-              {{boundCategoryLink category}}
-              {{#if details.loaded}}
-                {{topicStatus topic=model}}
-                <a href='{{unbound url}}' {{action jumpTop}}>
-                  {{#if topicSaving}}
-                    {{fancy_title}}
-                  {{else}}
-                    {{{fancy_title}}}
-                  {{/if}}
-                </a>
-              {{/if}}
-
-
-              {{#if details.can_edit}}
-                <a href='#' {{action editTopic}} class='edit-topic' title='{{i18n edit}}'><i class="fa fa-pencil"></i></a>
-              {{/if}}
-            </h1>
-          {{/if}}
+          </h1>
         </div>
       </div>
     </div>
