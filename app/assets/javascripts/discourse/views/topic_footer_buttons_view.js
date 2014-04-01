@@ -22,7 +22,6 @@ Discourse.TopicFooterButtonsView = Discourse.ContainerView.extend({
       if (!topic.get('isPrivateMessage')) {
         // We hide some controls from private messages
         this.attachViewClass(Discourse.StarButton);
-        this.attachViewClass(Discourse.ShareButton);
         this.attachViewClass(Discourse.ClearPinButton);
         if (this.get('topic.details.can_flag_topic')) {
           this.attachViewClass(Discourse.FlagTopicButton);
