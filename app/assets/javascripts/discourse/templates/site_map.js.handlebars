@@ -10,16 +10,4 @@
       <li>{{partial "siteMap/mobileToggleLink"}}</li>
     {{/if}}
   </ul>
-
-  {{#if categories}}
-    <ul class="category-links">
-      <li class="heading" title="{{i18n filters.categories.help}}">
-        {{partial "siteMap/allCategoriesLink"}}
-      </li>
-
-      {{#each categories itemController=itemController}}
-        <li class="category">{{partial "siteMap/category"}}</li>
-      {{/each}}
-    </ul>
-  {{/if}}
 </section>
