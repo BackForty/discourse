@@ -221,7 +221,9 @@ Discourse::Application.routes.draw do
 
   get "p/:post_id/:user_id" => "posts#short_link"
 
-  resources :notifications
+  resources :notifications do
+    get :count, on: :member
+  end
 
   match "/auth/:provider/callback", to: "users/omniauth_callbacks#complete", via: [:get, :post]
   match "/auth/failure", to: "users/omniauth_callbacks#failure", via: [:get, :post]

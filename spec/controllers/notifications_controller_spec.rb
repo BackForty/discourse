@@ -19,4 +19,18 @@ describe NotificationsController do
     end
   end
 
+  describe 'count' do
+    let(:user) { mock('User', unread_notifications: 10) }
+    let(:single_sign_on) { mock('SingleSignOnRecord', user: user) }
+
+    it 'returns the number of notifications for that user' do
+      SingleSignOnRecord.stubs(:find_by)
+                        .with(external_id: '123')
+                        .returns(single_sign_on)
+
+      xhr :get, :count, id: 123
+
+      response.body.should == { notifications: 10 }.to_json
+    end
+  end
 end
