@@ -32,5 +32,11 @@ describe NotificationsController do
 
       response.body.should == { notifications: 10 }.to_json
     end
+
+    it 'returns 0 notifications for an invalid user id' do
+      xhr :get, :count, id: '1234132423'
+
+      response.body.should == { notifications: 0 }.to_json
+    end
   end
 end

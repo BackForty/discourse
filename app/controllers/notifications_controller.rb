@@ -14,8 +14,10 @@ class NotificationsController < ApplicationController
 
   def count
     sso = SingleSignOnRecord.find_by(external_id: params[:id])
-    user = sso.user
-    render json: { notifications: user.unread_notifications }
-  end
+    count = if sso
+      sso.user.unread_notifications
+    end.to_i
 
+    render json: { notifications: count }
+  end
 end
